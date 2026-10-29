@@ -33,8 +33,8 @@ Once **VOR/LOC** is active and **G/S** is armed or active:
 ## Dual AP (autoland)
 
 1. Capture LOC/G/S on **CMD A** alone first.
-2. When established and still above ~1500 ft height AGL, use **`cmd-b-hold` once** (press and hold). A short `cmd-b` press only changes over from CMD A to CMD B.
-3. Read `mcp-and-autopilot.cmd-a` and `mcp-and-autopilot.cmd-b`. Both must be on (also visible in `get_function_states`).
+2. When established and still above ~1500 ft height AGL, attempt **`cmd-b-hold` once** (press and hold). A short press changes channels; a hold can also merely change channels in the installed simulator, so its verified result is not proof of dual engagement.
+3. Read `mcp-and-autopilot.cmd-a` and `mcp-and-autopilot.cmd-b`. Both must be on (also visible in `get_function_states`). If only one is on, go around and report the failed setup; do not try the opposite hold button or substitute a manual flare on this final. Prepare any separate manual landing before another intercept as required by `landing`.
 4. **Never press either CMD button again** unless the published go-around requires it.
 5. If one CMD light goes out on final: **go around**. Do not toggle to restore dual channel below the glideslope.
 

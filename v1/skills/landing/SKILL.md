@@ -9,7 +9,7 @@ Tools: autopilot buttons are `cockpit_mcp_and_autopilot`, radios are `cockpit_ra
 
 ## Autoland is not an ILS with one autopilot
 
-A coupled ILS with a single autopilot (CMD A only) tracks LOC and G/S down to minima but does not flare or roll out. You land it manually, so tell the user that the landing needs manual input. Do not call it an autoland. A proper autoland needs both autopilots engaged and the autoland armed (checks below).
+A coupled ILS with a single autopilot (CMD A only) tracks LOC and G/S down to minima but does not flare or roll out. Continue to a manual landing only if that procedure was deliberately prepared from the aircraft manual before intercept, including verified control authority, AP/A/T handover, flare and thrust timing; telling the user that manual input is needed is not that preparation. Otherwise go around, not an improvised manual rescue on short final. A proper autoland needs both autopilots engaged and the autoland armed (checks below).
 
 ## Before intercepting the ILS
 
@@ -34,9 +34,9 @@ Do not intercept the glideslope from above and do not press APP repeatedly; if t
 
 ## Second autopilot
 
-With CMD A flying the coupled approach and APP armed, use **`cmd-b-hold` once** (press and hold; if B is flying, use `cmd-a-hold` instead). A short `cmd-b` press only changes over from A to B and never gives two channels. Both must be engaged **before 800 ft radio altitude**; below that the second autopilot is locked out. In practice do it right after G/S capture and well above 1,500 ft. Read `cmd-a` and `cmd-b` (both on). Never press either again (see `ils-final-hands-off`).
+With CMD A flying the coupled approach and APP armed, attempt **`cmd-b-hold` once** (press and hold; if B is flying, use `cmd-a-hold` instead). A short press changes channels, and a hold action can also merely change channels in the installed simulator: `verified: true` for one button does not prove dual engagement. Both must be engaged **before 800 ft radio altitude**; below that the second autopilot is locked out. In practice do it right after G/S capture and well above 1,500 ft. Read `cmd-a` and `cmd-b` (both on). Never press either again (see `ils-final-hands-off`).
 
-If that read-back leaves only one CMD on, the autoland setup failed: go around and report the engagement problem rather than trying the other CMD toggle. A centred single-autopilot ILS is not proof that you can land manually. Prepare any separate manual landing from the aircraft manual before final, including control handover, flare and thrust timing; do not invent that sequence on short final to rescue a failed autoland.
+If that read-back leaves only one CMD on, the autoland setup failed: go around and report the engagement problem rather than trying the other CMD toggle. After stabilizing on the missed approach, resolve the capability problem or prepare a separate supported manual landing before another intercept; do not repeat the failed autoland setup and assume a centred ILS makes a manual landing safe.
 
 ## Checks at about 1,500 ft radio altitude
 
@@ -49,6 +49,8 @@ Read `flight-instruments.height-agl` and the group `mcp-and-autopilot`. This is 
 On the real PFD **SINGLE CH** disappears and **LAND 3** (or FLARE armed) appears. The MCP server has **no reading for that annunciation**, so you cannot see it: rely on the FMA readings and the CMD lights. Do not continue expecting an autoland if FLARE is not armed or one CMD is off. **FLARE must be armed by 350 ft radio altitude**; if it is not, treat it as an autoland failure and go around.
 
 ## 1,000 to 500 ft
+
+At 1,000 ft AGL, confirm the intended landing method is still viable. Single-channel G/S without a manual procedure prepared before intercept requires an immediate go-around; do not descend to the 350-foot autoland gate hoping to invent a flare. When autoland remains viable, shorten the scan interval using height trend and call delay so the next read arrives before that gate.
 
 Do not touch the MCP modes: no `lnav`, `vnav`, `hdg-sel`, `v-s`, `lvl-chg`. Leave the autopilot in `VOR/LOC` + `G/S`. Finish configuring normally:
 

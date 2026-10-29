@@ -5,7 +5,7 @@ description: Prepare the Zibo 737-800X on the ground for takeoff: verify weight-
 
 # Before takeoff
 
-Use `fly-the-airplane` for how the tools work. The FMC route and performance data come from `fmc-setup`; the roll itself is `takeoff-straight-ahead`. Read the `takeoff` checklist section (`read_checklist`) and mark each item as soon as you have done it and confirmed it.
+Use `fly-the-airplane` for how the tools work. The FMC route and performance data come from `fmc-setup`; the roll itself is `takeoff-straight-ahead`. While stopped, read every section of the `taxi` category before `takeoff` (`read_checklist` with `category`), even if already lined up and no taxi movement is needed: its configuration checks still apply. Do and verify unfinished applicable actions, mark only confirmed items, and review each section's `completed` and `total` before brake release; explain unavailable or inapplicable checks rather than falsely marking them. Then review the `takeoff` category and mark each item as soon as you have done it and confirmed it.
 
 ## Verify the data
 
