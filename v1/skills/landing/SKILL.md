@@ -36,6 +36,8 @@ Do not intercept the glideslope from above and do not press APP repeatedly; if t
 
 With CMD A flying the coupled approach and APP armed, use **`cmd-b-hold` once** (press and hold; if B is flying, use `cmd-a-hold` instead). A short `cmd-b` press only changes over from A to B and never gives two channels. Both must be engaged **before 800 ft radio altitude**; below that the second autopilot is locked out. In practice do it right after G/S capture and well above 1,500 ft. Read `cmd-a` and `cmd-b` (both on). Never press either again (see `ils-final-hands-off`).
 
+If that read-back leaves only one CMD on, the autoland setup failed: go around and report the engagement problem rather than trying the other CMD toggle. A centred single-autopilot ILS is not proof that you can land manually. Prepare any separate manual landing from the aircraft manual before final, including control handover, flare and thrust timing; do not invent that sequence on short final to rescue a failed autoland.
+
 ## Checks at about 1,500 ft radio altitude
 
 Read `flight-instruments.height-agl` and the group `mcp-and-autopilot`. This is the autoland verification point; the second autopilot's pitch channel becomes active and the dual-channel checks run:
@@ -58,13 +60,13 @@ Do not touch the MCP modes: no `lnav`, `vnav`, `hdg-sel`, `v-s`, `lvl-chg`. Leav
 
 ## Flare and thrust retard (hands off)
 
-Do nothing with the controls. You must **not** try to flare or pull the throttles yourself.
+Only with both CMD lights and verified FLARE/ROLLOUT arming: do nothing with the controls. You must **not** try to flare or pull the throttles yourself. A single autopilot remaining in `G/S` does not perform this sequence; cutting thrust to idle while still hundreds of feet up and then disconnecting leaves too little time for a verified manual handover. If the autoland checks fail, use `go-around`, not late idle/disconnect/pitch calls.
 
 1. About **50 ft**: the AFDS flares automatically. `fma-pitch` changes from `G/S` to `FLARE` and the flight director bars retract. Do not disconnect the autopilot.
 2. About **27 ft**: the autothrottle retards the thrust levers toward idle during the flare.
 3. **Touchdown.** The autopilot stays engaged for the immediate landing and `fma-roll` `ROLLOUT` tracks the centreline.
 
-Monitor only: `airspeed`, `vertical-speed` (negative), `height-agl`, FMA, `nav-1-localizer` and `nav-1-glideslope` dots. If FLARE and ROLLOUT do not appear when they should, treat it as a failed autoland.
+Monitor only: `airspeed`, `vertical-speed` (negative), `height-agl`, FMA, both CMD lights, `nav-1-localizer` and `nav-1-glideslope` dots. Read the modes together with height; use the descent trend and call delay to check again before passing the 350-foot verification gate, not after it. If FLARE and ROLLOUT do not appear when they should, treat it as a failed autoland.
 
 ## After touchdown
 
@@ -85,5 +87,5 @@ Steer on the ground with the rudder control: turn `flight-controls.joystick-over
 Go around with `to-ga-left` and follow the published missed approach if any of these happens:
 
 - a CMD drops, LOC or G/S is lost, or the FMA disagrees with the lights;
-- FLARE is not armed by 350 ft radio altitude (or ROLLOUT is not armed) and you cannot land manually with confidence;
+- FLARE is not armed by 350 ft radio altitude, or ROLLOUT is not armed, on an intended autoland;
 - the approach is unstable, or the required visual references are absent at minima for the approach you are flying.
